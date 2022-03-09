@@ -1,6 +1,8 @@
 # HOW TO: React Setup with Webpack and Babel 
 In this breakdown we will be going over how to setup a react development enviroment from scratch. This enviroment will include Webpack and Babel for easy development that will include hot reloading. 
 
+>NOTE: This repo contains the finialized code for this setup. 
+
 ## Roadmap 
 1. Create source 📁  directories and 📝 files.
 2. Install and setup 🧶 Yarn. 
