@@ -1,6 +1,17 @@
+@font-face {
+  font-family: 'Prototype Regular';
+  src: url('./fonts/prototype.regular.ttf') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
   background-color: #1f1f1f;
   color: #f1f1f1;
+}
+
+h1 {
+  font-family: 'Prototype Regular';
 }
