@@ -10,6 +10,7 @@ In this breakdown we will be going over how to setup a react development envirom
 4. Set up 📦 Webpack Configuration for bundeling. 
 5. Set up 🪄 Babel Configuration. 
 6. Set up Webpack Development Server for 🔥 hot reloading.
+7. BONUS: Sass Configuration
 
 ## Create source 📁  directories and 📝 files.
 For our application we will create some starting directories and files. 
@@ -381,7 +382,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(jsx|js)$/,
         exclude: /node_modules/,
         loader: "babel-loader"
       },
@@ -428,3 +429,85 @@ To view your server head on over to `localhost:3000` in your browser.
 
 And just like that we are off to the races! Enjoy and..
 ### Happy Hacking! 💻
+
+## BONUS: Sass Setup 
+To leverage a css preprocessor we have to include additonal dependencies and add them to our configuration.
+
+### Sass Dependencies
+
+- [sass-loader](https://www.npmjs.com/package/sass-loader) loads a Sass/SCSS file and compiles it to CSS.
+- [sass](https://www.npmjs.com/package/sass) css preprocessor. 
+
+```bash 
+yarn add sass-loader sass --dev  
+```
+
+### Sass Webpack Configuration
+Now that we have our dependencies installed we can tell webpack to leverge them for sass files. 
+
+Inside webpack.config.js:
+```js 
+const path = require("path");
+
+module.exports = {
+  mode: "development",
+  entry: "./src/index.js",
+  output: {
+    path: path.join(__dirname, 'public'),
+    filename: "bundle.js"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(jsx|js)$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      },
+      /*
+      Our original css test 
+      {
+        test: /\.css$/,
+        use: ['style-loader','css-loader']
+      }
+      */
+     // new css test to include sass 
+     {
+       // looks for sass OR css files on import
+      test: /\.s[ac]ss$/i,
+      use: [
+        // Creates `style` nodes from JS strings
+        "style-loader",
+        // Translates CSS into CommonJS
+        "css-loader",
+        // Compiles Sass to CSS
+        "sass-loader",
+      ],
+    },
+    ]
+  },
+  devtool: "eval-cheap-module-source-map",
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    compress: true,
+    port: 3000,
+  }
+}
+```
+
+With this addition to our configuration we can now import sass files just like js files! 
+
+Inside index.js: 
+```js 
+import React from "react";
+import reactDOM from "react-dom";
+// our scss import statement
+import "./index.scss";
+
+const App = () => {
+  return <h1>Hello World</h1>
+}
+
+reactDOM.render(<App />, document.getElementById("root"));
+```
