@@ -10,9 +10,9 @@ In this breakdown we will be going over how to setup a react development envirom
 4. Set up 📦 Webpack Configuration for bundeling. 
 5. Set up 🪄 Babel Configuration. 
 6. Set up Webpack Development Server for 🔥 hot reloading.
-7. BONUS: Sass Configuration
-8. BONUS: Image Assets Configuration
-9. BONUS: Custom Font Configuration
+7. ✨ BONUS: Sass Configuration
+8. ✨ BONUS: Image Assets Configuration
+9. ✨ BONUS: Custom Font Configuration
 
 ## Create source 📁  directories and 📝 files.
 For our application we will create some starting directories and files. 
@@ -432,7 +432,7 @@ To view your server head on over to `localhost:3000` in your browser.
 And just like that we are off to the races! Enjoy and..
 ### Happy Hacking! 💻
 
-## BONUS: Sass Setup 
+## ✨ BONUS: Sass Setup 
 To leverage a css preprocessor we have to include additonal dependencies and add them to our configuration.
 
 ### Sass Dependencies
@@ -514,7 +514,7 @@ const App = () => {
 reactDOM.render(<App />, document.getElementById("root"));
 ```
 
-## BONUS: Image Assets Configuration
+## ✨ BONUS: Image Assets Configuration
 By default webpack will not allow the module import of image assets. To allow this we will include a new rule to permit this. 
 
 Inside webpack.config.js:
@@ -561,7 +561,7 @@ const App = () => {
 reactDOM.render(<App />, document.getElementById("root"));
 ```
 
-## BONUS: Custom Font Configuration
+## ✨ BONUS: Custom Font Configuration
 By default webpack will not allow the import of custom font types. This allow this feature we will add a new fule to our configuration. 
 
 Inside webpack.config.js: 
