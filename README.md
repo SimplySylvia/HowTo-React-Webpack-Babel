@@ -419,7 +419,7 @@ Inside package.json:
     "start": "webpack --mode=development",
     "build": "webpack --mode=production",
     // our new script to start up our development server
-    "dev": "webpack-dev-server"
+    "dev": "webpack serve --open"
   },
 ```
 
