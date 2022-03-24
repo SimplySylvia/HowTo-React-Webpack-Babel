@@ -11,6 +11,7 @@ In this breakdown we will be going over how to setup a react development envirom
 5. Set up 🪄 Babel Configuration. 
 6. Set up Webpack Development Server for 🔥 hot reloading.
 7. BONUS: Sass Configuration
+8. BONUS: Image Assets Configuration
 
 ## Create source 📁  directories and 📝 files.
 For our application we will create some starting directories and files. 
@@ -508,6 +509,53 @@ import "./index.scss";
 const App = () => {
   return <h1>Hello World</h1>
 }
+
+reactDOM.render(<App />, document.getElementById("root"));
+```
+
+## BONUS: Image Assets Configuration
+By default webpack will not allow the module import of image assets. To allow this we will include a new rule to permit this. 
+
+Inside webpack.config.js:
+```js
+ module: {
+    rules: [
+      {
+        test: /\.(jsx|js)$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      // our new rule to allow the import of image assets 
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+    ],
+  },
+```
+
+With that set we can now import images into our files. 
+
+Inside index.js: 
+```js 
+import React from "react";
+import reactDOM from "react-dom";
+import "./index.scss";
+// here is our import for an image
+import hello from "./images/helloworld.gif";
+
+const App = () => {
+  return (
+    <div className='app'>
+      <h1>Hello World</h1>
+      <img src={hello} alt='hello world animated' />
+    </div>
+  );
+};
 
 reactDOM.render(<App />, document.getElementById("root"));
 ```
