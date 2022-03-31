@@ -144,7 +144,11 @@ yarn add babel-loader css-loader style-loader --dev
 Our final package.json should look something like this: 
 
 ```json
-"devDependencies": {
+"dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
@@ -155,10 +159,6 @@ Our final package.json should look something like this:
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
   },
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  }
 ```
 
 > NOTE: Your version numbers might look different since packages update over time.
@@ -222,6 +222,29 @@ module.exports = {
 ```
 
 With this setup in place we will be able to start using the webpack terminal command to bundle out code. At the moment our index.js is empty so let's change that. 
+
+> If you are using React 18^
+
+Inside src/index.js: 
+
+```js
+// Bring React in to build a component.
+import React from "react";
+// Import from react-dom the ability to create a root render
+import { createRoot } from "react-dom/client";
+// create the root of the app by selection where the app should be mounted in the dom
+const root = createRoot(document.getElementById("root"));
+
+// Here is out base App component. 
+// Notice we are NOT using jsx here. This is because we have not set up babel yet.
+const App = React.createElement("h1",null,"Hello World");
+
+// render the root element with the provided component
+root.render(<App />);
+
+```
+
+> If you are using React 17~
 
 Inside src/index.js: 
 ```js
@@ -350,15 +373,15 @@ Now we can use all the cool js features like jsx! Time to update our application
 
 Inside src/index.js: 
 ```js 
-import React from "react";
-import reactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+const root = createRoot(document.getElementById("root"));
 
 // Huzzah for jsx!
 const App = () => {
   return <h1>Hello World</h1>
 }
 
-reactDOM.render(<App />, document.getElementById("root"));
+root.render(<App />);
 ```
 
 Go ahead and run your `start` script and check it out! 
@@ -503,15 +526,17 @@ With this addition to our configuration we can now import sass files just like j
 Inside index.js: 
 ```js 
 import React from "react";
-import reactDOM from "react-dom";
-// our scss import statement
+import { createRoot } from "react-dom/client"; 
+const root = createRoot(document.getElementById("root"));
+
+// here is out import for our styles
 import "./index.scss";
 
 const App = () => {
   return <h1>Hello World</h1>
 }
 
-reactDOM.render(<App />, document.getElementById("root"));
+root.render(<App />); 
 ```
 
 ## ✨ BONUS: Image Assets Configuration
@@ -544,9 +569,11 @@ With that set we can now import images into our files.
 Inside index.js: 
 ```js 
 import React from "react";
-import reactDOM from "react-dom";
+import { createRoot } from "react-dom/client"; 
+const root = createRoot(document.getElementById("root")); 
+
 import "./index.scss";
-// here is our import for an image
+
 import hello from "./images/helloworld.gif";
 
 const App = () => {
@@ -558,7 +585,7 @@ const App = () => {
   );
 };
 
-reactDOM.render(<App />, document.getElementById("root"));
+root.render(<App />); 
 ```
 
 ## ✨ BONUS: Custom Font Configuration
