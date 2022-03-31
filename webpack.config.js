@@ -1,8 +1,9 @@
 const path = require("path");
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/index.jsx",
   output: {
     path: path.join(__dirname, "public"),
     filename: "bundle.js",
@@ -36,4 +37,5 @@ module.exports = {
     compress: true,
     port: 3000,
   },
+  plugins: [new ESLintPlugin()],
 };
