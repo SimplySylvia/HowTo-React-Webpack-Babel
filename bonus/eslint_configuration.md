@@ -1,4 +1,4 @@
-# ✨ Eslint Setup
+# ✨ Eslint Configuration
 Eslint is a great tool to help us as developers follow a style guide and ensure a consistent code base. Our linter will run on our files and output if we are ever not following these guidelines. 
 
 ## Eslint Dependencies 
@@ -19,10 +19,12 @@ This will start an interactive prompt just like `npm init` or `yarn init`.
 
 ### Step One 
 In this first step we are choosing how we want to use eslint. This is up to your personal use case. For this example we will choose the most demanding use case.
+
 ![choose eslint enforcement level](../assets/set_up_one.png)
 
 ### Step Two 
 This step sets how out import statements are configured. In react we are leveraging Javascript Modules so we will select this option.
+
 ![choose import style](../assets/set_up_two.png)
 
 ### Step Three
@@ -37,10 +39,12 @@ This step tells the linter if we are using typescript. For this example we are n
 
 ### Step Five 
 This step we are selection the enviroment our app will run. Since this is react a client side application we will choose browser. 
+
 ![enviroment selection](../assets/set_up_five.png)
 
 ### Step Six 
 If you want to follow a predefined style guide you can choose the use existing option OR you can go through a series of questions to define your own. For this example we will use a preexisting style guide. 
+
 ![decide if you want to use a style guide](../assets/set_up_six.png)
 
 ### Step Seven
